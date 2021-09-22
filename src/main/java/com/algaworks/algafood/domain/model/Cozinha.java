@@ -17,7 +17,6 @@ public class Cozinha {
 	private Long id;
 
 	@Column(nullable = false)
-	@JsonProperty(value = "nome_cozinha")
 	private String nome;
 
 }
