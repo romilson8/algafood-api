@@ -9,4 +9,6 @@ public interface RestauranteService {
     Restaurante buscar(Long id);
 
     List<Restaurante> listar();
+
+    Restaurante salvar(Restaurante restaurante);
 }
