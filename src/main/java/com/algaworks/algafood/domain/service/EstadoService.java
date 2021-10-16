@@ -1,6 +1,6 @@
 package com.algaworks.algafood.domain.service;
 
-import com.algaworks.algafood.domain.model.Estado;
+import com.algaworks.algafood.domain.model.app.Estado;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.algaworks.algafood.domain.service;
 
-import com.algaworks.algafood.domain.model.Cozinha;
+import com.algaworks.algafood.domain.model.auth.Cozinha;
 
 import java.util.List;
 

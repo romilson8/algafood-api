@@ -1,0 +1,18 @@
+{
+  "groups": [
+    {
+      "name": "app.datasource",
+      "type": "javax.sql.DataSource",
+      "sourceType": "com.algaworks.algafood.configuration.AppDbConfig",
+      "sourceMethod": "appDataSource()"
+    },
+    {
+      "name": "auth.datasource",
+      "type": "javax.sql.DataSource",
+      "sourceType": "com.algaworks.algafood.configuration.AuthDbConfig",
+      "sourceMethod": "authDataSource()"
+    }
+  ],
+  "properties": [],
+  "hints": []
+}

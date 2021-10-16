@@ -1,7 +1,7 @@
 package com.algaworks.algafood.api.controller;
 
-import com.algaworks.algafood.domain.model.Course;
-import com.algaworks.algafood.infrastructure.repository.CourseRepository;
+import com.algaworks.algafood.domain.model.auth.Course;
+import com.algaworks.algafood.domain.model.auth.repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
