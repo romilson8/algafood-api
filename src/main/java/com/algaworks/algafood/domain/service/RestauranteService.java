@@ -11,4 +11,6 @@ public interface RestauranteService {
     List<Restaurante> listar();
 
     Restaurante salvar(Restaurante restaurante);
+
+    Restaurante atualizar(Long id, Restaurante restaurante);
 }

@@ -5,3 +5,6 @@ insert into restaurante (nome, taxa_frete, cozinha_id) values ('China Dragon', 2
 insert into restaurante (nome, taxa_frete, cozinha_id) values ('Dragao Vermelho', 7, 1);
 insert into restaurante (nome, taxa_frete, cozinha_id) values ('Cow Owk', 1.9, 2);
 
+insert into course (name, category) values ('Spring', 'Back-end')
+insert into course (name, category) values ('Angular', 'Front-end')
+

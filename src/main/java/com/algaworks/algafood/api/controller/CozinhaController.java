@@ -6,7 +6,6 @@ import com.algaworks.algafood.domain.model.Cozinha;
 import com.algaworks.algafood.domain.service.CozinhaService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -53,11 +52,11 @@ public class CozinhaController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Cozinha> remover(@PathVariable Long id){
+    public ResponseEntity<Cozinha> remover(@PathVariable Long id) {
         try {
             cozinhaService.remover(id);
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-        } catch (EntidadeNaoEncontradaException exception){
+        } catch (EntidadeNaoEncontradaException exception) {
             return ResponseEntity.notFound().build();
         } catch (EntidadeEmUsoException exception) {
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
