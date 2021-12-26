@@ -11,6 +11,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CidadeServiceImpl implements CidadeService {
@@ -25,7 +26,13 @@ public class CidadeServiceImpl implements CidadeService {
 
     @Override
     public Cidade buscar(Long id) {
-        return cidadeRepository.findById(id).orElseThrow( () -> new IllegalArgumentException(" Objeto não encontrado "));
+        try {
+            return cidadeRepository.findById(id).orElseThrow(() -> new IllegalArgumentException(" Objeto não encontrado "));
+        } catch (EmptyResultDataAccessException exception) {
+            throw new EntidadeNaoEncontradaException(String.format("Não existe uma string de Cidade com codigo d" + id));
+        } catch (DataIntegrityViolationException exception) {
+            throw new EntidadeEmUsoException(String.format("Cidade de código d não pode ser removida, pois está em uso" + id));
+        }
     }
 
     @Override
@@ -35,26 +42,15 @@ public class CidadeServiceImpl implements CidadeService {
 
     @Override
     public void remover(Long id) {
-        try {
-            Cidade cidade = this.buscar(id);
-            cidadeRepository.delete(cidade);
-        } catch (EmptyResultDataAccessException exception) {
-            throw new EntidadeNaoEncontradaException(String.format(
-                    "Não existe uma string de Cidade com codigo d" + id
-            ));
-        } catch (DataIntegrityViolationException exception) {
-            throw new EntidadeEmUsoException(String.format(
-                    "Cidade de código d não pode ser removida, pois está em uso" + id
-            ));
-        }
+        cidadeRepository.delete(this.buscar(id));
     }
+
 
     @Override
     public Cidade atualizar(Long id, Cidade cidade) {
-        Cidade cidadeEncontrada = cidadeRepository.findById(id).get();
-        if(cidadeEncontrada == null){
-            throw new EntidadeNaoEncontradaException(String.format("" +
-                    "Cidade com codigo %d não encontrado na base", id));
+        Optional<Cidade> cidadeEncontrada = cidadeRepository.findById(id);
+        if (cidadeEncontrada == null) {
+            throw new EntidadeNaoEncontradaException(String.format("" + "Cidade com codigo %d não encontrado na base", id));
         }
         BeanUtils.copyProperties(cidade, cidadeEncontrada, "id");
         return cidadeRepository.save(cidade);

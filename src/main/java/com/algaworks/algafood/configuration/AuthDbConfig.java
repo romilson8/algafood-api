@@ -16,7 +16,7 @@ import javax.sql.DataSource;
                         basePackages = {"com.algaworks.algafood.domain.model.auth.repository"})
 public class AuthDbConfig {
 
-    @Bean
+    @Bean(name = "authDataSource")
     @ConfigurationProperties(prefix = "auth.datasource")
     public DataSource authDataSource() {
         return DataSourceBuilder.create().build();
@@ -28,6 +28,7 @@ public class AuthDbConfig {
             @Qualifier("authDataSource") DataSource dataSource) {
         return builder
                 .dataSource(dataSource)
+                .persistenceUnit("Auth")
                 .packages("com.algaworks.algafood.domain.model.auth")
                 .build();
     }

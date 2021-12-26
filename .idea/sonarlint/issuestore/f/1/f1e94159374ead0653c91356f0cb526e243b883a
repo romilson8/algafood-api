@@ -1,0 +1,9 @@
+
+V
+java:S3457 "AFormat specifiers should be used instead of string concatenation.(š§–5
+\
+java:S3457""AFormat specifiers should be used instead of string concatenation.(±ù·óûÿÿÿÿ
+c
+java:S27894"FEnsure this "Optional" could never be null and remove this null-check.(šÛÏÿ8æşõŞ/
+a
+java:S25834"DChange this condition so that it does not always evaluate to "false"(šÛÏÿ8ñşõŞ/

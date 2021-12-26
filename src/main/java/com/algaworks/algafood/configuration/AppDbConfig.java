@@ -19,7 +19,7 @@ import javax.sql.DataSource;
 public class AppDbConfig {
 
     @Primary
-    @Bean
+    @Bean(name = "appDataSource")
     @ConfigurationProperties(prefix = "app.datasource")
     public DataSource appDataSource() {
         return DataSourceBuilder.create().build();
@@ -32,6 +32,7 @@ public class AppDbConfig {
             @Qualifier("appDataSource") DataSource dataSource) {
         return builder
                 .dataSource(dataSource)
+                .persistenceUnit("App")
                 .packages("com.algaworks.algafood.domain.model.app")
                 .build();
     }
