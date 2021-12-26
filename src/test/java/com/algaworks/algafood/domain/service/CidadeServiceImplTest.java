@@ -18,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
+// duas formas de fazer o mockito funcionar (com a anotation @ExtendWith(MockitoExtension.class) e com MockitoAnnotations.initMocks(this) dentro @BeforeEach)
 //@ExtendWith(MockitoExtension.class)
 class CidadeServiceImplTest {
 
